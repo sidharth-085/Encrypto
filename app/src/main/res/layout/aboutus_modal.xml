@@ -16,7 +16,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/encrypto_cutout" />
+            android:src="@drawable/encrypto_logo" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/cardDetialsAddFragment"
-        android:name="com.sid.encrypto.ui.fragments.card.CardDetialsAddFragment"
+        android:name="com.sid.encrypto.ui.fragments.card.CardDetailsAddFragment"
         android:label="fragment_card_detials_add"
         tools:layout="@layout/fragment_card_detials_add" />
     <fragment

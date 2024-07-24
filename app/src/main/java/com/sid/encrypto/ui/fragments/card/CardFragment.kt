@@ -123,7 +123,7 @@ class CardFragment : Fragment() {
         }
     }
     private fun goToCardAddFragment() {
-        val fragment = CardDetialsAddFragment()
+        val fragment = CardDetailsAddFragment()
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.fragment,fragment)?.addToBackStack( "tag" )?.commit()
     }

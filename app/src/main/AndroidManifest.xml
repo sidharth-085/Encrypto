@@ -12,9 +12,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="true"
-        android:icon="@drawable/encrypto_cutout"
+        android:icon="@drawable/encrypto_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/encrypto_cutout"
+        android:roundIcon="@drawable/encrypto_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Encrypto"
         tools:targetApi="31">
