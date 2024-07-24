@@ -1,5 +1,10 @@
+<div align="center">
+</br>
+<img src="https://github.com/user-attachments/assets/49ccb36c-3622-4b1f-8382-ee44f9796487" width="200" />
 
-# 🔒 Encrypto: A Password Manager Android Application
+</div>
+
+<h1 align="center">🔒 Encrypto: A Password Manager Android Application</h1>
 
 Encrypto is a simple Android application made using Kotlin for managing your passwords. Encrypto securely stores all your login credentials and other important information, so you never have to worry about forgetting passwords or searching for lost information. Keep your digital life organized and protected with Encrypto.
 
@@ -20,27 +25,39 @@ Many people struggle with memorizing all their passwords, and sometimes even for
 # 📱 Screenshots
 
 
+![1](https://github.com/user-attachments/assets/c093a815-8f4c-4f1b-a21c-44e7147ffd1c)
+<br><br>
+
+![2](https://github.com/user-attachments/assets/d98deaa4-a911-4f51-bf6f-450c9a9acf82)
+<br><br>
+
+![3](https://github.com/user-attachments/assets/2132e18b-e35f-4060-bf3c-e167689a36eb)
+<br><br>
+
+![4](https://github.com/user-attachments/assets/bc1a7a0e-f278-4e01-bf06-55e1a4b94d74)
+<br><br>
+
 # 🛠 Made With
 
-- Kotlin: First-class and official programming language for Android development.
+- [Kotlin](https://developer.android.com/kotlin/first) - First class and official programming language for Android development.
+  
+- [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) - For asynchronous and more..
+  
+- [Android Architecture Components](https://developer.android.com/topic/architecture) - Collection of libraries that help you design testable, and maintainable apps.
+  
+  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes.
+    
+  - [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Generates a binding class for each XML layout file present in that module and allows you to more easily write code that interacts with views.
+    
+  - [Room](https://developer.android.com/training/data-storage/room) - Room is an android library which is an ORM which wraps android's native SQLite database.
+    
+  - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - LiveData was used to save and store values for viewModel calls and response of method calls.
+    
+- [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
+  
+- [Password Strength Meter](https://github.com/gustavaa/AndroidPasswordStrengthMeter) - Password strength meter is an easy-to-implement and flexible password strength indicator for Android.
 
-- Coroutines: For asynchronous programming.
-
-- Android Architecture Components: Collection of libraries that help you design testable and maintainable apps.
-
-  - **ViewModel:** Stores UI-related data that isn't destroyed on UI changes.
-
-  - **ViewBinding:** Generates a binding class for each XML layout file present in that module and allows you to more easily write code that interacts with views.
-
-  - **Room:** ORM library that wraps Android's native SQLite database.
-
-  - **LiveData:** Used to save and store values for ViewModel calls and response of method calls.
-
-- Material Components for Android: Modular and customizable Material Design UI components for Android.
-
-- Password Strength Meter: Easy-to-implement and flexible password strength indicator for Android.
-
-# Package Structure
+# 👀 Package Structure
 
     com.sid.encrypto    # Root Package
     
@@ -62,7 +79,7 @@ Many people struggle with memorizing all their passwords, and sometimes even for
     |
     └── viewmodel           # Generates a binding class for each XML layout file
 
-# Architecture
+# 👷‍♂️ Architecture
 
 This app uses [MVVM(Model View View-Model)](https://developer.android.com/topic/architecture#recommended-app-arch) architecture.
 
