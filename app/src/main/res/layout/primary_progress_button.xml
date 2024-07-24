@@ -9,13 +9,13 @@
         android:id="@+id/progress_button_bg"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/button_color">
+        android:background="@color/button_color"
+        android:backgroundTint="@color/black">
 
         <TextView
             android:id="@+id/buttonText"
             android:layout_width="330dp"
             android:layout_height="55dp"
-            android:background="@drawable/normal_button"
             android:fontFamily="@font/dm_sans"
             android:gravity="center"
             android:text="Button Text"

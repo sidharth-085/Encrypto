@@ -127,7 +127,7 @@
             android:layout_marginTop="15dp"
             android:clipToPadding="false"
             android:nestedScrollingEnabled="false"
-            android:paddingBottom="80dp"
+            android:paddingBottom="72dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -142,7 +142,7 @@
             android:layout_gravity="end|bottom"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="12dp"
             android:animateLayoutChanges="true"
             android:background="@drawable/fab_drawable"
             android:backgroundTint="@color/black"
@@ -150,10 +150,10 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:outlineProvider="none"
+            app:layout_constraintStart_toStartOf="parent"
             android:outlineSpotShadowColor="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
-
 
             <TextView
                 android:id="@+id/fab_text"
