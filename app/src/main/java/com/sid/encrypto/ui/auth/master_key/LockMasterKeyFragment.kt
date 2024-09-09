@@ -32,7 +32,7 @@ class LockMasterKeyFragment : Fragment() {
     private lateinit var buttonText: TextView
     private lateinit var buttonProgress: ProgressBar
     private lateinit var checkKeyViewModel: KeyViewModel
-    private var isPasswordVisible = false
+    private var isPasswordVisible = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -100,13 +100,27 @@ class LockMasterKeyFragment : Fragment() {
 
     private fun togglePassword() {
         Util.hideKeyboard(requireActivity())
-        val showPasswordResId =
-            if (isPasswordVisible) R.drawable.visibility_on else R.drawable.visibility_off
-        isPasswordVisible = isPasswordVisible.not()
-        val passwordTransMethod = if (isPasswordVisible) null else PasswordTransformationMethod()
+
+        isPasswordVisible = !isPasswordVisible
+
+        val showPasswordResId = if (isPasswordVisible) {
+            R.drawable.visibility_on
+        } else {
+            R.drawable.visibility_off
+        }
+
+        val passwordTransMethod = if (isPasswordVisible) {
+            null
+        } else {
+            PasswordTransformationMethod.getInstance()
+        }
 
         binding.passwordToggle.setImageResource(showPasswordResId)
         binding.inputMasterKey.transformationMethod = passwordTransMethod
+
+        binding.inputMasterKey.post {
+            binding.inputMasterKey.setSelection(binding.inputMasterKey.text.length)
+        }
     }
 
     private fun goToMainActivity() {

@@ -39,5 +39,14 @@ class MasterKeyActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        val flow = intent.getStringExtra("flow")
 
+        if (flow == "askForMasterKey") {
+            moveTaskToBack(true)
+        }
+        else {
+            super.onBackPressed()
+        }
+    }
 }

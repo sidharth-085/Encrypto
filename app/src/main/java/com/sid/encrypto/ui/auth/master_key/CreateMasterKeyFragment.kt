@@ -148,24 +148,57 @@ class CreateMasterKeyFragment : Fragment() {
 
     private fun confirmTogglePassword() {
         hideKeyboard(requireActivity())
-        val showPasswordResId =
-            if (isPasswordVisible) R.drawable.visibility_on else R.drawable.visibility_off
-        isPasswordVisible = isPasswordVisible.not()
-        val passwordTransMethod = if (isPasswordVisible) null else PasswordTransformationMethod()
 
+        // Toggle the password visibility state
+        isPasswordVisible = !isPasswordVisible
+
+        // Determine the icon based on the visibility state
+        val showPasswordResId = if (isPasswordVisible) {
+            R.drawable.visibility_on
+        } else {
+            R.drawable.visibility_off
+        }
+
+        // Set the transformation method based on the visibility state
+        val passwordTransMethod = if (isPasswordVisible) {
+            null
+        } else {
+            PasswordTransformationMethod.getInstance()
+        }
+
+        // Update the UI components
         binding.confirmPasswordToggle.setImageResource(showPasswordResId)
         binding.confirmMasterKey.transformationMethod = passwordTransMethod
+
+        // Move cursor to the end of the password field to maintain focus
+        binding.confirmMasterKey.post {
+            binding.confirmMasterKey.setSelection(binding.confirmMasterKey.text.length)
+        }
     }
 
     private fun togglePassword() {
         hideKeyboard(requireActivity())
-        val showPasswordResId =
-            if (isPasswordVisible) R.drawable.visibility_on else R.drawable.visibility_off
-        isPasswordVisible = isPasswordVisible.not()
-        val passwordTransMethod = if (isPasswordVisible) null else PasswordTransformationMethod()
+
+        isPasswordVisible = !isPasswordVisible
+
+        val showPasswordResId = if (isPasswordVisible) {
+            R.drawable.visibility_on
+        } else {
+            R.drawable.visibility_off
+        }
+
+        val passwordTransMethod = if (isPasswordVisible) {
+            null
+        } else {
+            PasswordTransformationMethod.getInstance()
+        }
 
         binding.passwordToggle.setImageResource(showPasswordResId)
         binding.masterKey.transformationMethod = passwordTransMethod
+
+        binding.masterKey.post {
+            binding.masterKey.setSelection(binding.masterKey.text.length)
+        }
     }
 
     private fun goToMainActivity() {

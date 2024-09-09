@@ -66,7 +66,8 @@ class SplashActivity : AppCompatActivity() {
                     CoroutineScope(Dispatchers.Main).launch {
                         delay(1000)
                         val intent = Intent(this@SplashActivity, MasterKeyActivity::class.java)
-                        intent.putExtra("flow","createMasterKey")
+                        intent.putExtra("flow", "createMasterKey")
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                         finish()
                     }
@@ -75,7 +76,8 @@ class SplashActivity : AppCompatActivity() {
                     CoroutineScope(Dispatchers.Main).launch {
                         delay(1000)
                         val intent = Intent(this@SplashActivity, MasterKeyActivity::class.java)
-                        intent.putExtra("flow","askForMasterKey")
+                        intent.putExtra("flow", "askForMasterKey")
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                         finish()
                     }
