@@ -49,6 +49,7 @@ class CardAdapter(private val context: Context): RecyclerView.Adapter<CardAdapte
                 // Passing data to Edit fragments
                 val bundle = Bundle()
 
+                bundle.putSerializable("id", currentCard.id)
                 bundle.putSerializable("cardType", currentCard.cardType)
                 bundle.putSerializable("cardNumber", decryptedNumber)
                 bundle.putSerializable("cardName", currentCard.cardHolderName)

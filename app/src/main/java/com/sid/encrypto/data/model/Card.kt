@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "card_table")
 data class Card(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Int,
     val cardType: String,
     val cardNumber: String,
     val cardHolderName: String,

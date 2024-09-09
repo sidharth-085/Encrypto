@@ -226,7 +226,6 @@ class CardDetailsAddFragment : Fragment() {
 
         val card = Card(0, type, encryptedNo, name, encryptedMonth, encryptedYear, encryptedCVV)
         addCardViewModel.addCard(card)
-
     }
 
     private fun stopProgress() {

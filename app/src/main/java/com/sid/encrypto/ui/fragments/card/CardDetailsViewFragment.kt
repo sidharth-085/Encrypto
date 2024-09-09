@@ -3,6 +3,7 @@ package com.sid.encrypto.ui.fragments.card
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ import com.sid.encrypto.util.Util.Companion.createBottomSheet
 import com.sid.encrypto.util.Util.Companion.setBottomSheet
 import com.sid.encrypto.viewModel.CardViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.sid.encrypto.util.Encryption
 import java.util.Locale
 
 class CardDetailsViewFragment : Fragment() {
@@ -66,14 +68,6 @@ class CardDetailsViewFragment : Fragment() {
 
         // Clearing FLAG_SECURE when the fragment is destroyed
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
-    }
-
-    private fun deleteCard(currentCard: Card) {
-        binding.delete.setOnClickListener {
-            cardViewModel.deleteCard(currentCard)
-            Toast.makeText(requireContext(),"Successfully Deleted",Toast.LENGTH_SHORT).show()
-            transaction()
-        }
     }
 
     private fun showCard(cardType: String) {
@@ -126,6 +120,7 @@ class CardDetailsViewFragment : Fragment() {
     }
 
     private fun fetchData() {
+        val id = arguments?.getInt("id")
         val cardType = arguments?.getString("cardType").toString()
         val cardNumber = arguments?.getString("cardNumber").toString()
         val cardHolderName = arguments?.getString("cardName").toString()
@@ -147,8 +142,37 @@ class CardDetailsViewFragment : Fragment() {
             demoCvv.text = cardCVV
         }
         showCard(cardType)
-        currentCard = Card(0,cardType,cardNumber,cardHolderName,cardExpireMonth,cardExpireYear,cardCVV)
-        deleteCard(currentCard)
+        currentCard = Card(id!! , cardType, cardNumber, cardHolderName, cardExpireMonth, cardExpireYear, cardCVV)
+
+        setupDeleteButton()
+    }
+
+    private fun setupDeleteButton() {
+        binding.delete.setOnClickListener {
+            val encryptedCard = createEncryptedCard()
+            cardViewModel.deleteCard(encryptedCard)
+            Toast.makeText(requireContext(),"Successfully Deleted",Toast.LENGTH_SHORT).show()
+            transaction()
+        }
+    }
+
+    private fun createEncryptedCard(): Card {
+        // Encrypting the data's
+        val encryption = Encryption.getDefault("Key", "Salt", ByteArray(16))
+        val encryptedCardNo = encryption.encryptOrNull(currentCard.cardNumber)
+        val encryptedExpirationMonth = encryption.encryptOrNull(currentCard.expirationMonth)
+        val encryptedExpirationYear = encryption.encryptOrNull(currentCard.expirationYear)
+        val encryptedCVV = encryption.encryptOrNull(currentCard.cvv)
+
+        return Card(
+            currentCard.id,
+            currentCard.cardType,
+            encryptedCardNo,
+            currentCard.cardHolderName,
+            encryptedExpirationMonth,
+            encryptedExpirationYear,
+            encryptedCVV
+        )
     }
 
     private fun handleBackButton() {
