@@ -15,8 +15,8 @@ android {
         applicationId = "com.sid.encrypto"
         minSdk = 24
         targetSdk = 34
-        versionCode = 10
-        versionName = "2.1.0"
+        versionCode = 1
+        versionName = "0.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     lint {
@@ -90,9 +90,6 @@ dependencies {
 
     // Password Strength Meter
     implementation ("nu.aaro.gustav:passwordstrengthmeter:0.4")
-
-    // In-app update
-    implementation ("com.google.android.play:core:1.10.3")
 
     // Circular Progress bar
     implementation ("com.mikhaellopez:circularprogressbar:3.1.0")

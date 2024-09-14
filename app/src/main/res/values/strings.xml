@@ -14,7 +14,7 @@
     <string name="edit_email">Email <font color='#FF0000'>*</font></string>
     <string name="edit_username">UserName</string>
     <string name="edit_password">Password <font color='#FF0000'>*</font></string>
-    <string name="v1.1.0">v1.1.0</string>
+    <string name="v0.1.0">v0.1.0</string>
     <string name="description_about_the_option">Description about the option</string>
     <string name="Password_Strength">Check Password Strength</string>
     <string name="password_strength_des">You can check the strength of the password that you have saved for any particular account.</string>
