@@ -22,7 +22,6 @@
     <string name="credentials_backups">Credentials Backups</string>
     <string name="backup_credentials_to_google_drive">Backup credentials to Google Drive</string>
     <string name="security">Security</string>
-    <string name="biometric_authentication">Biometric Authentication</string>
     <string name="share_app">Share App</string>
     <string name="share_app_with_others">Share app with others</string>
     <string name="feedback">Feedback</string>

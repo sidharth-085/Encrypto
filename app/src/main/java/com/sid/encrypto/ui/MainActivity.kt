@@ -10,17 +10,11 @@ import com.sid.encrypto.ui.fragments.settings.SettingsFragment
 import com.sid.encrypto.ui.fragments.account.HomeFragment
 import com.sid.encrypto.ui.fragments.card.CardFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.play.core.appupdate.AppUpdateInfo
-import com.google.android.play.core.appupdate.AppUpdateManager
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.tasks.Task
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var bottomNav: BottomNavigationView
-    private lateinit var appUpdateManager: AppUpdateManager
-    private lateinit var task: Task<AppUpdateInfo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +23,6 @@ class MainActivity : AppCompatActivity() {
         loadFragment(HomeFragment())
         //Hides action bar
         supportActionBar?.hide()
-
-        appUpdateManager = AppUpdateManagerFactory.create(this)
-        task = appUpdateManager.appUpdateInfo
 
         bottomNav = binding.bottomNav
         bottomNav.setOnItemSelectedListener {

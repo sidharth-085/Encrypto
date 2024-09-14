@@ -55,43 +55,6 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fingerprint_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-            <TextView
-                android:id="@+id/txtBiometric"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/dm_sans"
-                android:text="@string/unlock_with_fingerprint"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/FingerPrintSwitch"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:textOff="@string/off"
-                android:textOn="@string/on"
-                android:thumb="@drawable/switch_thumb"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:track="@drawable/switch_track" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/update_master_key_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

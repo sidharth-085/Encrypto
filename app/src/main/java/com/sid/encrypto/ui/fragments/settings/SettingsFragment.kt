@@ -19,6 +19,7 @@ import com.sid.encrypto.databinding.FragmentSettingsBinding
 import com.sid.encrypto.util.Util.Companion.createBottomSheet
 import com.sid.encrypto.util.Util.Companion.setBottomSheet
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.sid.encrypto.databinding.ContactUsModalBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -31,14 +32,9 @@ class SettingsFragment : Fragment() {
     private lateinit var settingsItemAdapter: SettingsItemAdapter
 
     @RequiresApi(Build.VERSION_CODES.P)
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-
         requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav).visibility = View.VISIBLE
-
         handleOperations()
         return binding.root
     }
@@ -48,12 +44,12 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setupSettingsOptions() {
-
         settingsItemList = ArrayList()
         settingsItemList.apply {
             add(SettingsItem(0, R.drawable.lock, "Secure Encrypto"))
             add(SettingsItem(1, R.drawable.feedback, "Request Features"))
-            add(SettingsItem(2, R.drawable.info, "About"))
+            add(SettingsItem(2, R.drawable.feedback, "Contact Us"))
+            add(SettingsItem(3, R.drawable.info, "About"))
         }
         settingsItemAdapter = SettingsItemAdapter(requireContext(), settingsItemList) {
             when(it) {
@@ -64,6 +60,9 @@ class SettingsFragment : Fragment() {
                     giveFeedback()
                 }
                 2 -> {
+                    contactUs()
+                }
+                3 -> {
                     aboutApp()
                 }
             }
@@ -91,11 +90,15 @@ class SettingsFragment : Fragment() {
         val dialog = AboutusModalBinding.inflate(layoutInflater)
         val bottomSheet = requireContext().createBottomSheet()
         dialog.apply {
-
             optionsContent.text = getString(R.string.about_app_text)
             optionsContent1.text = getString(R.string.about_app_text_second)
-
         }
+        dialog.root.setBottomSheet(bottomSheet)
+    }
+
+    private fun contactUs() {
+        val dialog = ContactUsModalBinding.inflate(layoutInflater)
+        val bottomSheet = requireContext().createBottomSheet()
         dialog.root.setBottomSheet(bottomSheet)
     }
 }

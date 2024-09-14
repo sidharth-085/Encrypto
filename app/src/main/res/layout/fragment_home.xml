@@ -137,7 +137,7 @@
         android:background="@drawable/fab_drawable"
         android:backgroundTint="@color/black"
         android:clipToPadding="false"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:orientation="horizontal"
         android:outlineProvider="none"
         app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +152,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/dm_sans_medium"
             android:text="@string/add_a_new_password"
-            android:layout_marginStart="78dp"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"/>
