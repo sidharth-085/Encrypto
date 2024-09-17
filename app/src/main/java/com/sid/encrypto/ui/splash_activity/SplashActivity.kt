@@ -43,7 +43,7 @@ class SplashActivity : AppCompatActivity() {
             launchAuthentication()
         }
         else {
-            setSharedPreferences(false)
+            setSharedPreferencesFalse()
             handleMasterKey()
         }
     }
@@ -63,7 +63,7 @@ class SplashActivity : AppCompatActivity() {
                     BiometricPromptManager.BiometricResult.AuthenticationFailed -> {}
 
                     BiometricPromptManager.BiometricResult.AuthenticationNotSet -> {
-                        setSharedPreferences(false)
+                        setSharedPreferencesFalse()
                         handleMasterKey()
                     }
                     BiometricPromptManager.BiometricResult.AuthenticationSuccess -> {
@@ -80,9 +80,9 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun setSharedPreferences(state: Boolean) {
+    private fun setSharedPreferencesFalse() {
         val editor: SharedPreferences.Editor = pref.edit()
-        editor.putBoolean("switchState", state)
+        editor.putBoolean("switchState", false)
         editor.apply()
     }
 

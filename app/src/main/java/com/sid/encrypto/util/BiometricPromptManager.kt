@@ -15,6 +15,14 @@ class BiometricPromptManager(
 ) {
     private val resultChannel = Channel<BiometricResult>()
     val promptResults = resultChannel.receiveAsFlow()
+    private val authenticators = BIOMETRIC_STRONG or DEVICE_CREDENTIAL
+    // This DEVICE_CREDENTIAL authenticator we use when we wanted
+    // to allow PIN, PASSWORD OR PATTERN as Authenticator if Fingerprint
+    // is not available.
+
+    // private val authenticators = BIOMETRIC_STRONG
+    // Use only BIOMETRIC_STRONG allows only fingerprint for authentication
+    // and if not available, user can't authenticate.
 
     fun showBiometricPrompt(
         title: String,
@@ -25,13 +33,13 @@ class BiometricPromptManager(
         val promptInfoBuilder = PromptInfo.Builder()
             .setTitle(title)
             .setDescription(description)
-            .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
+            .setAllowedAuthenticators(authenticators)
 
         if (Build.VERSION.SDK_INT < 30) {
             promptInfoBuilder.setNegativeButtonText("Cancel")
         }
 
-        when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)) {
+        when (biometricManager.canAuthenticate(authenticators)) {
             BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
                 resultChannel.trySend(BiometricResult.FeatureUnavailable)
                 return
@@ -71,7 +79,7 @@ class BiometricPromptManager(
 
     fun isBiometricAvailable(): Boolean {
         val biometricManager = BiometricManager.from(activity)
-        return when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)) {
+        return when (biometricManager.canAuthenticate(authenticators)) {
             BiometricManager.BIOMETRIC_SUCCESS -> true
             else -> false
         }
