@@ -1,21 +1,33 @@
 package com.sid.encrypto.ui.splash_activity
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.*
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.sid.encrypto.databinding.ActivitySplashBinding
+import com.sid.encrypto.ui.MainActivity
 import com.sid.encrypto.ui.auth.MasterKeyActivity
+import com.sid.encrypto.util.BiometricPromptManager
 import com.sid.encrypto.viewModel.KeyViewModel
 import com.sid.encrypto.viewModel.ViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @RequiresApi(Build.VERSION_CODES.P)
 class SplashActivity : AppCompatActivity() {
+
+    lateinit var pref: SharedPreferences
+
+    private val promptManager by lazy {
+        BiometricPromptManager(this)
+    }
 
     lateinit var binding: ActivitySplashBinding
     private val keyViewModel by viewModels<KeyViewModel> { ViewModelFactory() }
@@ -27,7 +39,66 @@ class SplashActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        handleMasterKey()
+        if (isAuthenticationEnabled() && promptManager.isBiometricAvailable()) {
+            launchAuthentication()
+        }
+        else {
+            setSharedPreferences(false)
+            handleMasterKey()
+        }
+    }
+
+    private fun launchAuthentication() {
+        promptManager.showBiometricPrompt(
+            "Secure Encrypto",
+            "Verify your identity using biometrics for secure access."
+        )
+
+        lifecycleScope.launch {
+            promptManager.promptResults.collectLatest { result ->
+                when(result) {
+                    is BiometricPromptManager.BiometricResult.AuthenticationError -> {
+                        handleMasterKey()
+                    }
+                    BiometricPromptManager.BiometricResult.AuthenticationFailed -> {}
+
+                    BiometricPromptManager.BiometricResult.AuthenticationNotSet -> {
+                        setSharedPreferences(false)
+                        handleMasterKey()
+                    }
+                    BiometricPromptManager.BiometricResult.AuthenticationSuccess -> {
+                        goToMainActivity()
+                    }
+                    BiometricPromptManager.BiometricResult.FeatureUnavailable -> {
+                        handleMasterKey()
+                    }
+                    BiometricPromptManager.BiometricResult.HardwareUnavailable -> {
+                        handleMasterKey()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setSharedPreferences(state: Boolean) {
+        val editor: SharedPreferences.Editor = pref.edit()
+        editor.putBoolean("switchState", state)
+        editor.apply()
+    }
+
+    private fun goToMainActivity() {
+        val intent = Intent(this@SplashActivity, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun isAuthenticationEnabled() : Boolean {
+        pref = applicationContext.getSharedPreferences(
+            "mypref",
+            Context.MODE_PRIVATE
+        )
+        val isAuthEnabled = pref.getBoolean("switchState", false)
+        return isAuthEnabled
     }
 
     private fun handleMasterKey() {

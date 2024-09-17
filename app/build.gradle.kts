@@ -93,4 +93,7 @@ dependencies {
 
     // Circular Progress bar
     implementation ("com.mikhaellopez:circularprogressbar:3.1.0")
+
+    // Biometric dependency
+    implementation("androidx.biometric:biometric:1.1.0")
 }
