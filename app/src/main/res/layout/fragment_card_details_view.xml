@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_color"
-    tools:context=".ui.fragments.card.CardDetailsViewFragment">
+    tools:context=".presentation.screens.card.fragments.CardDetailsViewFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

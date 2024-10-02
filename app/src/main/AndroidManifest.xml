@@ -18,18 +18,18 @@
         android:theme="@style/Theme.Encrypto"
         tools:targetApi="31">
         <activity
-            android:name=".ui.auth.MasterKeyActivity"
+            android:name=".presentation.screens.auth.MasterKeyActivity"
             android:windowSoftInputMode="adjustResize"
             android:exported="true" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".presentation.screens.main.MainActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.splash_activity.SplashActivity"
+            android:name=".presentation.screens.splash_screen.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

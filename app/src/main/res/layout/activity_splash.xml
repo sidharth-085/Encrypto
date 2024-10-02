@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:layout_height="match_parent"
-    tools:context=".ui.splash_activity.SplashActivity"
+    tools:context=".presentation.screens.splash_screen.SplashActivity"
     android:background="@color/black">
 
     <ImageView

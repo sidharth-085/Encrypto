@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".ui.auth.master_key.UpdateMasterKeyFragment">
+    tools:context=".presentation.screens.auth.fragments.UpdateMasterKeyFragment">
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"

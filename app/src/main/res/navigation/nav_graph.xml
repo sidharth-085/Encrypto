@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.sid.encrypto.ui.fragments.account.HomeFragment"
+        android:name="com.sid.encrypto.presentation.screens.accounts.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.sid.encrypto.ui.fragments.account.AddFragment"
+        android:name="com.sid.encrypto.presentation.screens.accounts.fragments.AddFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/editFragment"
-        android:name="com.sid.encrypto.ui.fragments.account.EditFragment"
+        android:name="com.sid.encrypto.presentation.screens.accounts.fragments.EditFragment"
         android:label="fragment_edit"
         tools:layout="@layout/fragment_edit" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/cardFragment"
-        android:name="com.sid.encrypto.ui.fragments.card.CardFragment"
+        android:name="com.sid.encrypto.presentation.screens.card.fragments.CardFragment"
         android:label="fragment_card"
         tools:layout="@layout/fragment_card" >
         <action
@@ -55,12 +55,12 @@
     </fragment>
     <fragment
         android:id="@+id/cardDetialsAddFragment"
-        android:name="com.sid.encrypto.ui.fragments.card.CardDetailsAddFragment"
+        android:name="com.sid.encrypto.presentation.screens.card.fragments.CardDetailsAddFragment"
         android:label="fragment_card_detials_add"
         tools:layout="@layout/fragment_card_detials_add" />
     <fragment
         android:id="@+id/settingsFragment2"
-        android:name="com.sid.encrypto.ui.fragments.settings.SettingsFragment"
+        android:name="com.sid.encrypto.presentation.screens.settings.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/securityFragment"
-        android:name="com.sid.encrypto.ui.fragments.settings.SecurityFragment"
+        android:name="com.sid.encrypto.presentation.screens.settings.fragments.SecurityFragment"
         android:label="fragment_security"
         tools:layout="@layout/fragment_security" />
 </navigation>

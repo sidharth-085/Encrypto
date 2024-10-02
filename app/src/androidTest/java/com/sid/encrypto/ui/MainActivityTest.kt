@@ -14,6 +14,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.sid.encrypto.R
+import com.sid.encrypto.presentation.screens.main.MainActivity
 import org.junit.Rule
 import org.junit.Test
 

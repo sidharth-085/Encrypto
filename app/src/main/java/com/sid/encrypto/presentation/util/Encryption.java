@@ -1,4 +1,4 @@
-package com.sid.encrypto.util;
+package com.sid.encrypto.presentation.util;
 
 
 import android.util.Base64;
